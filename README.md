@@ -1,6 +1,6 @@
 # Machine Learning Repository: Questions 6 – 15
 
-Comprehensive, modular, and production-ready solutions for Machine Learning Questions 6 through 15. Each solution includes complete data preprocessing, algorithm implementation, evaluation metrics, comparative analysis, high-resolution visualizations, and theoretical documentation.
+Clean, concise, and focused implementations for Machine Learning Questions 6 through 15. Every solution directly answers only the requested tasks in a straightforward manner.
 
 ---
 
@@ -9,166 +9,80 @@ Comprehensive, modular, and production-ready solutions for Machine Learning Ques
 ```text
 ml-repo/
 ├── README.md                                           # Master repository documentation (this file)
-├── requirements.txt                                    # Complete project dependencies
-├── run_all.py                                          # Master CLI runner script for all questions
-├── .gitignore                                          # Standard Python/Git ignore rules
-├── data/                                               # Auto-cached local dataset directory
-├── outputs/                                            # Centralized store for all generated figures
-│   ├── q06_feature_scaling_comparison.png
-│   ├── q07_naive_bayes_comparison.png
-│   ├── q08_knn_k_value_analysis.png
+├── requirements.txt                                    # Project dependencies
+├── run_all.py                                          # Master script to run all or selected questions
+├── .gitignore                                          # Git ignore configuration
+├── data/                                               # Cached dataset storage (auto-downloaded)
+├── outputs/                                            # Visualizations (Decision Tree & Margin plots)
 │   ├── q09_decision_tree_customer_segments.png
-│   ├── q10_logreg_vs_decision_tree.png
-│   ├── q11_linear_svm_iris_margin.png
-│   ├── q12_svm_kernel_comparison.png
-│   ├── q13_mlp_wine_architectures.png
-│   ├── q14_activation_functions_mnist.png
-│   └── q15_hyperparameter_tuning_fashion_mnist.png
+│   └── q11_linear_svm_iris_margin.png
 ├── Q06_Logistic_Regression_Pima/
-│   ├── question_06_solution.py                         # Standalone executable solution
-│   ├── q06_feature_scaling_comparison.png              # Generated metric & ROC comparison
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_06_solution.py                         # Logistic Regression with/without scaling
+│   └── README.md                                       # Results & scaling convergence analysis
 ├── Q07_Naive_Bayes_20Newsgroups/
-│   ├── question_07_solution.py                         # Standalone executable solution
-│   ├── q07_naive_bayes_comparison.png                  # Multinomial vs Bernoulli comparison
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_07_solution.py                         # Multinomial vs Bernoulli Naïve Bayes
+│   └── README.md                                       # Comparison & variant strengths/weaknesses
 ├── Q08_KNN_Fashion_MNIST/
-│   ├── question_08_solution.py                         # Standalone executable solution
-│   ├── q08_knn_k_value_analysis.png                    # Accuracy, latency & confusion matrix
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_08_solution.py                         # KNN image classification with varying K
+│   └── README.md                                       # Impact of K & computational complexity
 ├── Q09_Decision_Tree_ID3_Online_Retail/
-│   ├── question_09_solution.py                         # Standalone executable solution
-│   ├── q09_decision_tree_customer_segments.png         # ID3 Tree diagram & RFM importances
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_09_solution.py                         # ID3 Decision Tree customer segmentation
+│   ├── q09_decision_tree_customer_segments.png         # Tree structure visualization
+│   └── README.md                                       # Feature importance & customer behavior
 ├── Q10_Logistic_Regression_vs_Decision_Tree_Adult/
-│   ├── question_10_solution.py                         # Standalone executable solution
-│   ├── q10_logreg_vs_decision_tree.png                 # Odds ratios & Gini tree importances
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_10_solution.py                         # Logistic Regression vs Decision Trees
+│   └── README.md                                       # Metric comparison & interpretability
 ├── Q11_Linear_SVM_Iris/
-│   ├── question_11_solution.py                         # Standalone executable solution
-│   ├── q11_linear_svm_iris_margin.png                  # Maximum margin & support vectors
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_11_solution.py                         # Linear SVM binary classification
+│   ├── q11_linear_svm_iris_margin.png                  # Decision boundary & margin visualization
+│   └── README.md                                       # Margin concept & support vectors
 ├── Q12_SVM_Kernels_Fashion_MNIST/
-│   ├── question_12_solution.py                         # Standalone executable solution
-│   ├── q12_svm_kernel_comparison.png                   # Linear vs Polynomial vs RBF benchmark
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_12_solution.py                         # Linear, Polynomial, and RBF kernels
+│   └── README.md                                       # Performance & kernel pros/cons
 ├── Q13_MLP_Wine_Quality/
-│   ├── question_13_solution.py                         # Standalone executable solution
-│   ├── q13_mlp_wine_architectures.png                  # Loss curves & capacity tradeoffs
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_13_solution.py                         # MLP with varying hidden layer architectures
+│   └── README.md                                       # Architecture depth & width analysis
 ├── Q14_Activation_Functions_MNIST/
-│   ├── question_14_solution.py                         # Standalone executable solution
-│   ├── q14_activation_functions_mnist.png              # Sigmoid vs Tanh vs ReLU dynamics
-│   └── README.md                                       # Detailed theoretical & empirical report
+│   ├── question_14_solution.py                         # Sigmoid, Tanh, and ReLU comparison
+│   └── README.md                                       # Vanishing gradients & training dynamics
 └── Q15_Hyperparameter_Tuning_Fashion_MNIST/
-    ├── question_15_solution.py                         # Standalone executable solution
-    ├── q15_hyperparameter_tuning_fashion_mnist.png     # LR, Batch Size & Epoch heatmaps
-    └── README.md                                       # Detailed theoretical & empirical report
+    ├── question_15_solution.py                         # Grid tuning: LR, Batch Size, Epochs
+    └── README.md                                       # Hyperparameter impact analysis
 ```
 
 ---
 
-## Solutions Executive Summary
+## Summary of Solutions & Questions
 
-| Question | Algorithm & Domain | Dataset | Key Experimental Results | Documentation & Code |
-| :---: | :--- | :--- | :--- | :--- |
-| **Q06** | **Logistic Regression** (Feature Scaling Study) | Pima Indians Diabetes | Feature scaling (`StandardScaler`) improved convergence speed by **22x** (from 175 to 8 iterations) and increased Precision from 58.7% to 60.0%. | [Q06 Folder](file:///Users/danyl/ml-repo/Q06_Logistic_Regression_Pima/README.md) \| [Code](file:///Users/danyl/ml-repo/Q06_Logistic_Regression_Pima/question_06_solution.py) |
-| **Q07** | **Naïve Bayes** (Multinomial vs. Bernoulli) | 20 Newsgroups | Multinomial NB substantially outperformed Bernoulli NB (**82.89% vs 67.44% accuracy**, **0.8240 vs 0.6707 Macro F1**) due to capturing repeated domain keyword counts. | [Q07 Folder](file:///Users/danyl/ml-repo/Q07_Naive_Bayes_20Newsgroups/README.md) \| [Code](file:///Users/danyl/ml-repo/Q07_Naive_Bayes_20Newsgroups/question_07_solution.py) |
-| **Q08** | **K-Nearest Neighbors** ($K$ Experimentation) | Fashion MNIST | Optimal performance achieved at **$K = 9$ (79.50% accuracy)**. Demonstrates bias-variance tradeoff and test-time latency of lazy learning ($O(N \cdot d)$ per query). | [Q08 Folder](file:///Users/danyl/ml-repo/Q08_KNN_Fashion_MNIST/README.md) \| [Code](file:///Users/danyl/ml-repo/Q08_KNN_Fashion_MNIST/question_08_solution.py) |
-| **Q09** | **Decision Tree (ID3)** (Entropy & Info Gain) | Online Retail (UCI) | Engineered RFM features; ID3 tree identified **Purchase Frequency (71.08% importance)** and **Recency (22.51%)** as primary customer segmentation drivers (**88.33% accuracy**). | [Q09 Folder](file:///Users/danyl/ml-repo/Q09_Decision_Tree_ID3_Online_Retail/README.md) \| [Code](file:///Users/danyl/ml-repo/Q09_Decision_Tree_ID3_Online_Retail/question_09_solution.py) |
-| **Q10** | **Logistic Regression vs Decision Trees** | Adult Income (Census) | Both achieved high AUC (**0.9077** for LogReg vs **0.9060** for Tree). Decision Tree offers higher precision (80.17%), while LogReg provides higher recall (61.29%) and linear odds ratios. | [Q10 Folder](file:///Users/danyl/ml-repo/Q10_Logistic_Regression_vs_Decision_Tree_Adult/README.md) \| [Code](file:///Users/danyl/ml-repo/Q10_Logistic_Regression_vs_Decision_Tree_Adult/question_10_solution.py) |
-| **Q11** | **Linear SVM** (Margin & Boundary Visuals) | Iris Dataset | Visualized maximum margin hyperplanes and support vectors. Margin width $\gamma = \frac{2}{\|\mathbf{w}\|}$ was 1.0326 (hard margin, 2 SVs) and 0.9333 (soft margin, 19 SVs). | [Q11 Folder](file:///Users/danyl/ml-repo/Q11_Linear_SVM_Iris/README.md) \| [Code](file:///Users/danyl/ml-repo/Q11_Linear_SVM_Iris/question_11_solution.py) |
-| **Q12** | **SVM Kernels** (Linear, Polynomial, RBF) | Fashion MNIST | **RBF Kernel achieved the highest accuracy (84.70%)**, outperforming Linear (81.70%) and Polynomial (80.70%), proving the necessity of infinite-dimensional RKHS on image manifolds. | [Q12 Folder](file:///Users/danyl/ml-repo/Q12_SVM_Kernels_Fashion_MNIST/README.md) \| [Code](file:///Users/danyl/ml-repo/Q12_SVM_Kernels_Fashion_MNIST/question_12_solution.py) |
-| **Q13** | **Multilayer Perceptron (MLP)** (Architectures) | Wine Quality (UCI) | Evaluated 4 PyTorch architectures; **Medium `[64, 32]` achieved the best generalization (62.36% test accuracy, 0.6096 F1)**, outperforming shallow (underfitting) and deep (overfitting). | [Q13 Folder](file:///Users/danyl/ml-repo/Q13_MLP_Wine_Quality/README.md) \| [Code](file:///Users/danyl/ml-repo/Q13_MLP_Wine_Quality/question_13_solution.py) |
-| **Q14** | **Neural Activations** (Sigmoid, Tanh, ReLU) | MNIST Handwritten Digits | **ReLU achieved 97.02% test accuracy** and converged to $0.0003$ loss (140x lower than Sigmoid). Tanh outperformed Sigmoid (96.48% vs 95.85%) due to zero-centered gradient flow. | [Q14 Folder](file:///Users/danyl/ml-repo/Q14_Activation_Functions_MNIST/README.md) \| [Code](file:///Users/danyl/ml-repo/Q14_Activation_Functions_MNIST/question_14_solution.py) |
-| **Q15** | **Hyperparameter Tuning** (LR, Batch, Epochs) | Fashion MNIST | Grid search identified optimal configuration: **$\text{LR} = 0.002$, $\text{Batch Size} = 64$, $\text{Epochs} = 15$ (86.48% accuracy)**. Large batch sizes boosted throughput by +56.7%. | [Q15 Folder](file:///Users/danyl/ml-repo/Q15_Hyperparameter_Tuning_Fashion_MNIST/README.md) \| [Code](file:///Users/danyl/ml-repo/Q15_Hyperparameter_Tuning_Fashion_MNIST/question_15_solution.py) |
-
----
-
-## Installation & Setup
-
-### 1. Clone Repository & Install Dependencies
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd ml-repo
-
-# Install all required packages
-pip install -r requirements.txt
-```
-
-### Dependencies
-- Python >= 3.9
-- `torch` & `torchvision` (Deep learning backends)
-- `scikit-learn` & `scipy` (Machine learning & statistical models)
-- `pandas` & `numpy` (Tabular data manipulation & linear algebra)
-- `matplotlib` & `seaborn` (Publication-grade scientific visualizations)
-- `openpyxl` & `ucimlrepo` (Dataset parsers)
+| Question | Topic | Dataset | Summary of Tasks Solved |
+| :---: | :--- | :--- | :--- |
+| **Q06** | **Logistic Regression** | Pima Indians Diabetes | Evaluates binary logistic regression with and without `StandardScaler`. Compares accuracy, precision, recall, and F1-score, showing faster convergence with scaling. |
+| **Q07** | **Naïve Bayes** | 20 Newsgroups | Compares Multinomial NB (word frequencies) with Bernoulli NB (word presence/absence) using Accuracy and F1-score, highlighting strengths and weaknesses. |
+| **Q08** | **K-Nearest Neighbors (KNN)** | Fashion MNIST | Tests neighbor values $K \in [1, 3, 5, 7, 9]$. Analyzes accuracy trends and computational complexity (lazy learner inference latency). |
+| **Q09** | **Decision Tree (ID3)** | Online Retail | Computes Recency, Frequency, Monetary (RFM) customer features. Trains an ID3 tree (entropy), visualizes the tree structure, and interprets feature importances. |
+| **Q10** | **Logistic Regression vs. Decision Tree** | Adult Income | Trains and evaluates both models for predicting $>50\text{K}$ income. Discusses interpretability (linear odds ratios vs if-else tree rules) and suitability. |
+| **Q11** | **Linear SVM** | Iris | Trains a Linear SVM to classify Setosa vs Non-Setosa in 2D feature space. Visualizes the decision boundary, margin lines ($w^Tx+b=\pm 1$), and support vectors. |
+| **Q12** | **SVM Kernels** | Fashion MNIST | Compares Linear, Polynomial ($d=3$), and RBF kernels on classification accuracy, F1-score, and training latency. Discusses the advantages/disadvantages of each kernel. |
+| **Q13** | **Multilayer Perceptron (MLP)** | Wine Quality | Implements 1-layer, 2-layer, and 3-layer MLP architectures. Compares test accuracy and discusses the impact of depth and width on underfitting vs overfitting. |
+| **Q14** | **Neural Activation Functions** | MNIST | Compares neural networks using Sigmoid, Tanh, and ReLU activations. Compares training time, convergence, and accuracy, explaining vanishing gradients. |
+| **Q15** | **Hyperparameter Tuning** | Fashion MNIST | Tunes Learning Rate ($0.001, 0.01, 0.1$), Batch Size ($32, 64, 128$), and Epochs ($5, 10, 15$). Analyzes how each hyperparameter impacts stability and accuracy. |
 
 ---
 
-## Running the Solutions
+## How to Run
 
-### Option A: Master Runner (`run_all.py`)
-You can execute all solutions end-to-end or run specific questions using the CLI runner:
-
+### Run All Questions (Master Script)
 ```bash
-# Execute all solutions sequentially (Questions 6 through 15)
 python3 run_all.py --all
+```
 
-# Execute specific questions (e.g. Questions 6, 11, and 14)
+### Run Specific Questions
+```bash
 python3 run_all.py --questions 6 11 14
 ```
 
-### Option B: Running Individual Solutions
-Each folder contains an autonomous, self-contained Python script:
-
+### Run an Individual Question Directly
 ```bash
-# Question 6: Logistic Regression (Pima Diabetes)
 cd Q06_Logistic_Regression_Pima
 python3 question_06_solution.py
-
-# Question 7: Naïve Bayes (20 Newsgroups)
-cd ../Q07_Naive_Bayes_20Newsgroups
-python3 question_07_solution.py
-
-# Question 8: KNN (Fashion MNIST)
-cd ../Q08_KNN_Fashion_MNIST
-python3 question_08_solution.py
-
-# Question 9: Decision Tree ID3 (Online Retail)
-cd ../Q09_Decision_Tree_ID3_Online_Retail
-python3 question_09_solution.py
-
-# Question 10: Logistic Regression vs Decision Trees (Adult Income)
-cd ../Q10_Logistic_Regression_vs_Decision_Tree_Adult
-python3 question_10_solution.py
-
-# Question 11: Linear SVM (Iris Dataset)
-cd ../Q11_Linear_SVM_Iris
-python3 question_11_solution.py
-
-# Question 12: SVM Kernels (Fashion MNIST)
-cd ../Q12_SVM_Kernels_Fashion_MNIST
-python3 question_12_solution.py
-
-# Question 13: Multilayer Perceptron Architectures (Wine Quality)
-cd ../Q13_MLP_Wine_Quality
-python3 question_13_solution.py
-
-# Question 14: Activation Functions (MNIST)
-cd ../Q14_Activation_Functions_MNIST
-python3 question_14_solution.py
-
-# Question 15: Hyperparameter Tuning (Fashion MNIST)
-cd ../Q15_Hyperparameter_Tuning_Fashion_MNIST
-python3 question_15_solution.py
 ```
-
----
-
-## Key Highlights & Scientific Best Practices
-1. **No Data Leakage:** All data preprocessing (imputations, standard scalers, one-hot encoders) is strictly fitted on training splits only and transformed onto test splits.
-2. **Reproducibility:** Seed values (`random_state=42`, `torch.manual_seed(42)`) are pinned across all experiments to guarantee identical, deterministic results.
-3. **Automated Data Fetching & Caching:** All datasets are automatically downloaded from authenticated repositories (UCI, PyTorch torchvision, Scikit-learn, GitHub) and cached in `data/`.
-4. **Rich Visualizations:** Every script generates 300 DPI publication-grade figures saved simultaneously to the question's local folder and the centralized `outputs/` folder.
