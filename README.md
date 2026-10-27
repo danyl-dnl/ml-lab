@@ -71,18 +71,72 @@ ml-repo/
 
 ## How to Run
 
-### Run All Questions (Master Script)
+### 1. Install Python
+
+Use Python 3.10 or 3.11. Check that Python and pip are available:
+
 ```bash
-python3 run_all.py --all
+python3 --version
+python3 -m pip --version
 ```
 
-### Run Specific Questions
+### 2. Open a terminal in the repository folder
+
+The folder should contain `run_all.py` and `requirements.txt`. For example:
+
 ```bash
-python3 run_all.py --questions 6 11 14
+cd ml-repo
 ```
 
-### Run an Individual Question Directly
+### 3. Create and activate a virtual environment
+
+A virtual environment keeps this repository's packages separate from other Python projects.
+
+macOS or Linux:
+
 ```bash
-cd Q06_Logistic_Regression_Pima
-python3 question_06_solution.py
+python3 -m venv .venv
+source .venv/bin/activate
 ```
+
+Windows PowerShell:
+
+```powershell
+py -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+### 4. Install the required packages
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+`requirements.txt` contains the packages used by the solutions, including pandas, scikit-learn, matplotlib, PyTorch, and torchvision.
+
+### 5. Run a question
+
+Run one question from the repository folder, for example Question 6:
+
+```bash
+python Q06_Logistic_Regression_Pima/question_06_solution.py
+```
+
+Run a few selected questions:
+
+```bash
+python run_all.py --questions 6 11 14
+```
+
+Run all questions:
+
+```bash
+python run_all.py --all
+```
+
+The first run of Questions 8, 12, 14, and 15 may download Fashion-MNIST or MNIST. Question 7 may download the 20 Newsgroups text dataset. Those questions need an internet connection the first time; downloaded copies are cached under `data/`.
+
+The Pima, Adult, Wine Quality, and Online Retail data files are already included in `data/`. Running every question takes longer than running one because several models are trained for comparison.
+
+When finished, leave the virtual environment by running `deactivate`.
