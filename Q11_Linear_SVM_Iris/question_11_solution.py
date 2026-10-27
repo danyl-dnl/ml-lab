@@ -1,85 +1,48 @@
-"""
-Question 11: Linear Support Vector Machine (SVM) on Iris Dataset
-Tasks:
-  1. Load and preprocess the Iris dataset.
-  2. Implement a Linear SVM for binary classification (Setosa vs Non-Setosa).
-  3. Visualize the decision boundary and margin.
-  4. Discuss the concept of the margin and how it influences classification.
-"""
-
+"""Question 11: Use a linear SVM to separate Iris Setosa from other flowers."""
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.datasets import load_iris
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
+# 1. Load Iris. Use petal length and width so we can draw a 2D picture.
+iris = load_iris()
+X = iris.data[:, [2, 3]]
+y = (iris.target == 0).astype(int)  # 1 = Setosa; 0 = another Iris type
 
-def main():
-    # 1. Load dataset (using 2 features for 2D boundary visualization: Petal Length and Petal Width)
-    iris = load_iris()
-    X = iris.data[:, [2, 3]]  # Petal length, Petal width
-    # 2. Binary classification: Setosa (1) vs Non-Setosa (0)
-    y = (iris.target == 0).astype(int)
+# 2. Train a linear support vector machine.
+model = SVC(kernel="linear", C=1.0)
+model.fit(X, y)
+predictions = model.predict(X)
+weights = model.coef_[0]
+margin_width = 2 / np.linalg.norm(weights)
+print("QUESTION 11: LINEAR SVM")
+print("Accuracy on these Iris examples:", round(accuracy_score(y, predictions), 4))
+print("Note: this is training accuracy because the model is measured on the same examples it learned from.")
+print("Support vectors:", len(model.support_vectors_))
+print("Margin width:", round(margin_width, 4))
 
-    # Implement Linear SVM
-    clf = SVC(kernel='linear', C=1.0)
-    clf.fit(X, y)
+# 3. Draw the data, decision boundary, and margins.
+plt.figure(figsize=(8, 6))
+plt.scatter(X[y == 1, 0], X[y == 1, 1], label="Setosa")
+plt.scatter(X[y == 0, 0], X[y == 0, 1], label="Other Iris")
+plt.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=130, facecolors="none", edgecolors="black", label="Support vectors")
+x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+xx, yy = np.meshgrid(np.linspace(x_min, x_max, 200), np.linspace(y_min, y_max, 200))
+values = model.decision_function(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
+plt.contour(xx, yy, values, levels=[-1, 0, 1], linestyles=["--", "-", "--"], colors=["green", "black", "green"])
+plt.xlabel("Petal length (cm)")
+plt.ylabel("Petal width (cm)")
+plt.title("Linear SVM: boundary and margins")
+plt.legend()
+plt.tight_layout()
+output_path = Path(__file__).resolve().parent / "q11_linear_svm_iris_margin.png"
+plt.savefig(output_path, dpi=200)
+plt.close()
+print("Plot saved to:", output_path)
 
-    y_pred = clf.predict(X)
-    acc = accuracy_score(y, y_pred)
-
-    w = clf.coef_[0]
-    b = clf.intercept_[0]
-    margin_width = 2.0 / np.linalg.norm(w)
-
-    print("=" * 55)
-    print("QUESTION 11: LINEAR SVM (IRIS DATASET)")
-    print("=" * 55)
-    print(f"Accuracy:                  {acc * 100:.2f}% (Linearly Separable)")
-    print(f"Number of Support Vectors: {len(clf.support_vectors_)}")
-    print(f"Margin Width (2 / ||w||):  {margin_width:.4f}")
-    print("=" * 55)
-
-    # 3. Visualize decision boundary and margin
-    plt.figure(figsize=(8, 6))
-
-    # Scatter points
-    plt.scatter(X[y == 1, 0], X[y == 1, 1], color='#2b5c8f', label='Setosa (1)', edgecolor='k', s=50)
-    plt.scatter(X[y == 0, 0], X[y == 0, 1], color='#e06666', label='Non-Setosa (0)', edgecolor='k', s=50)
-
-    # Highlight support vectors
-    sv = clf.support_vectors_
-    plt.scatter(sv[:, 0], sv[:, 1], s=140, facecolors='none', edgecolors='black', linewidth=1.5, label='Support Vectors')
-
-    # Plot decision boundary and margin lines
-    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
-    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
-    xx, yy = np.meshgrid(np.linspace(x_min, x_max, 200), np.linspace(y_min, y_max, 200))
-    Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
-
-    plt.contour(xx, yy, Z, levels=[-1, 0, 1], linestyles=['--', '-', '--'], colors=['green', 'black', 'green'], linewidths=[1.5, 2, 1.5])
-
-    plt.xlabel("Petal Length (cm)")
-    plt.ylabel("Petal Width (cm)")
-    plt.title(f"Linear SVM Decision Boundary & Margin (Margin Width = {margin_width:.3f})", weight='bold')
-    plt.legend(loc='upper left')
-    plt.tight_layout()
-    plt.savefig("q11_linear_svm_iris_margin.png", dpi=200)
-    plt.savefig("../outputs/q11_linear_svm_iris_margin.png", dpi=200)
-    plt.close()
-    print("[✓] Plot saved to q11_linear_svm_iris_margin.png")
-
-    # 4. Discuss concept of the margin
-    print("\n--- Discussion: The Concept of the Margin ---")
-    print("1. Definition of Margin:")
-    print("   - The margin is the separation distance between the decision boundary (w^T x + b = 0)")
-    print("     and the closest training points from either class. The geometric width is 2 / ||w||.")
-    print("2. Role of Support Vectors:")
-    print("   - Only points lying directly on the margin boundaries (w^T x + b = +/-1) determine the hyperplane.")
-    print("   - Moving non-support vector points has zero impact on the boundary.")
-    print("3. Influence on Generalization:")
-    print("   - Maximizing the margin minimizes structural risk and provides maximum safety against unseen test noise.")
-
-
-if __name__ == "__main__":
-    main()
+# 4. The margin is the gap between the decision line and its nearest examples.
+print("The nearest examples are called support vectors; they help set the decision boundary.")
+print("A wider margin usually makes the classifier less sensitive to small changes in the data.")
